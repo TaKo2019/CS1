@@ -1,0 +1,60 @@
+module bool
+
+import pair
+
+data bool = true | false
+
+
+--Function to check if two values are true
+andp: pair bool bool -> bool
+andp (mkPair true true) = true
+andp _ = false
+
+--Function to check if at least one value is true
+orp: pair bool bool -> bool
+orp (mkPair false false) = false
+orp _ = true
+
+-- Function to return false if both are true
+nandp: pair bool bool -> bool
+nandp (mkPair true true) = false
+nandp _ = true
+
+--Function to return true if only one value is true
+xorp: pair bool bool -> bool
+xorp (mkPair true false) = true
+xorp (mkPair false true) = true
+xorp _ = false
+
+-- Exam Problem 2:
+--There are 8 possible ways to fill in the result column for a truth
+--table for a binary Boolean function, and there are thus exactly 8
+--such functions, and no more."
+
+--Exam Problem 4A:
+--pand function implementation
+
+pand: bool -> bool -> bool
+pand true = id
+pand false = constFalse
+
+--Exam Problem 4B:
+--por function implementation
+
+por: bool -> bool -> bool
+por true = constTrue
+por false = id_bool
+
+--Exam Problem 4C:
+--pxor function implementation
+
+pxor: bool -> bool -> bool
+pxor true = not
+pxor false = id_bool
+
+--Exam Problem 4D:
+--pnand function implementation
+
+pnand: bool -> bool -> bool
+pnand true = not
+pnand false = constTrue
